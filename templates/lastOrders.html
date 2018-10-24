@@ -1,0 +1,26 @@
+<ion-view style="" class=" " id="page10" title="Riwayat Rental Saya">
+    <ion-content class="has-header" padding="true">
+
+
+      <ion-list ng-repeat="item in orders | orderBy : reverse:true">
+
+        <ion-item class="item-thumbnail-left" ng-click="detail(item)">
+
+          <img  ng-src="{{item.product_image}}" >
+
+          <a class="badge badge-balanced" style="position: absolute;right:0;" >{{item.status}}</a>
+
+          <h4> {{item.product_name}} </h4>
+          <p>Lama rental: {{item.item_qty}}  jam</p>
+          <p>Total harga: {{item.item_qty * item.product_price | currency: "IDR " : 0}}</p>
+          <p>Tanggal rental: {{item.date | date: "dd-MM-yyyy, H:mm"}}</p>
+
+        </ion-item>
+
+      </ion-list>
+
+<!-- <pre>
+{{orders | json}}
+</pre> -->
+    </ion-content>
+</ion-view>

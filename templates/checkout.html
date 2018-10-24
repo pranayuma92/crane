@@ -1,0 +1,62 @@
+<ion-view title="Pembayaran"  id="page16" >
+  <ion-content padding="true" class="has-header">
+
+    <form name="checkoutForm" class="list " ng-submit="pay(address_choice,pay_choice, downpayment_choice)" >
+
+      <!--Address Header-->
+      <label ng-click="addManipulation()" class="item item-input  item ic-selected" >
+        <a class="icon icon-right ion-ios-location" style="margin-right: 10px;" ></a>
+        Alamat
+        <i  class="icon icon-right ion-android-add-circle" style="font-size: larger ;margin-left: 10px;"></i>
+      </label>
+      <p style="color: red;margin-left: 30px">* Pilih salah satu opsi di bawah ini</p>
+
+
+      <!-- Address -->
+      <ion-list ng-repeat="item in addresses" >
+          <ion-radio name="addr_group" ng-value="item.$id" ng-model="$parent.address_choice">
+            <a class="icon icon-right ion-ios-location"></a>
+            {{item.nickname}} <br/>
+            {{item.address}} <br/>
+            Pin : {{item.pin}}<br/>
+            Telepon : {{item.phone}}
+          </ion-radio>
+      </ion-list>
+
+
+
+
+      <!--Payment Header-->
+      <label ng-click="addManipulation()" class="item item-input  item ic-selected" >
+        <a class="icon icon-right ion-cash" style="margin-right: 10px;" ></a>
+        Jenis Pembayaran
+      </label>
+       <p style="color: red; margin-left: 30px">* Pilih salah satu opsi di bawah ini</p>
+
+
+      <!-- Payment Options -->
+      <ion-list  ng-repeat="item in payments">
+          <ion-radio name="pay_group" ng-value="item.id" ng-model="$parent.pay_choice" > <p>{{item.name}}</p><p>{{item.opt}}</p> </ion-radio>
+      </ion-list>
+
+       <label class="item item-input  item ic-selected" >
+        <a class="icon icon-right ion-cash" style="margin-right: 10px;" ></a>
+        Pembayaran Awal
+      </label>
+       <p style="color: red;margin-left: 30px">* Pilih salah satu opsi di bawah ini</p>
+
+       <ion-list  ng-repeat="item in downpayment">
+          <ion-radio name="downpayment_group" ng-value="item.id" ng-model="$parent.downpayment_choice" > {{item.name}} %</ion-radio>
+      </ion-list>
+
+
+      <button type="submit" class=" button button-calm  button-block icon-right ion-android-arrow-forward ">
+        Bayar
+      </button>
+
+    </form>
+
+  </ion-content>
+
+
+</ion-view>

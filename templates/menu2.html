@@ -1,0 +1,76 @@
+<ion-view style="" class=" " id="page7" title="Daftar Mobil Crane">
+	<ion-nav-buttons side="secondary">
+		<button  ng-click="searchCrane()" class="button button-icon button-clear ion-android-search"></button>
+      	<button ui-sref="myCart"  class="button button-icon button-clear ion-android-archive">
+            {{get_total()}}
+        </button>
+  	</ion-nav-buttons>
+    <ion-content class="has-header" padding="false"  ng-init="loadMenu()"  >
+
+    	<div ng-show="menu.length == 0">
+    		<ion-item>
+    			<i class="ion-loading-c"></i>
+    			Memuat data, mohon tunggu...
+    		</ion-item>
+    	</div>
+
+    	<div ng-show="menu.length != 0">
+
+		<div class="row" ng-repeat="item in menu | filter:item | orderBy: reverse:true" ng-if="$index % 2 === 0" style="border-top: 1px solid #999;">
+
+
+			<div class="col col-50 " ng-if="$index < menu.length" style="padding:1px;border-right:1px solid #999" >
+
+				  <div class="item item-image" style="border-width: 0px; border-style: none;" >
+					<!-- <img ng-click="detail(menu[$index])" ng-src="{{'img/fk/'+ menu[$index].image +'.jpg'}}" width="100%" /> -->
+					<img ng-click="detail(menu[$index])" ng-src="{{menu[$index].image}}" width="100%" />
+				  </div>
+
+				  <a ng-click="detail(menu[$index])" class="item item-icon-right assertive" href="#"  style="border-width: 0px; border-style: none;" >
+					<p style="font-size: 12px;text-align:left;">
+            {{menu[$index].name}} <br/>
+            Muatan {{menu[$index].load}} Ton<br/>
+            Tahun  {{menu[$index].year}} <br/>
+             {{menu[$index].price | currency: "IDR ":0}}/jam<br/>
+						<!-- <span style="font-weight: bold;color: black;">Status {{menu[$index].available}}</span> -->
+						<span style="font-weight: bold;color: red;">Lihat detail</span>
+					</p>
+				  </a>
+				  <div class="act-btn">
+				  	<button class="button button-positive button-block button-small" ng-click="addToCart(menu[$index])">Rental</button>
+				  </div>
+
+			</div>
+
+
+			<div class="col col-50 " ng-if="$index+1  < menu.length" style="padding:1px;">
+
+				  <div class="item item-image" style="border-width: 0px; border-style: none;">
+					<!-- <img ng-click="detail(menu[$index+1])" ng-src="{{'img/fk/'+ menu[$index+1].image +'.jpg'}}" width="100%"  /> -->
+					<img ng-click="detail(menu[$index+1])" ng-src="{{menu[$index+1].image}}" width="100%"  />
+				  </div>
+
+				  <a ng-click="detail(menu[$index+1])" class="item item-icon-right assertive" href="javascript:void(0)"  style="border-width: 0px; border-style: none;" >
+					<p style="font-size: 12px;text-align:left;">
+            {{menu[$index+1].name}} <br/>
+             Muatan {{menu[$index+1].load}} Ton<br/>
+            Tahun  {{menu[$index+1].year}} <br/>
+             {{menu[$index+1].price | currency: "IDR ":0}}/jam<br/>
+						<!-- <span style="font-weight: bold;color: black;">Status {{menu[$index+1].available}}</span> -->
+						<span style="font-weight: bold;color: red;">Lihat detail</span>
+					</p>
+				  </a>
+				  <div class="act-btn">
+				  	<button class="button button-positive button-block button-small" ng-click="addToCart(menu[$index+1])">Rental</button>
+				  </div>
+			</div>
+
+		</div>
+	</div>
+	<!-- <button class="button button-positive button-block button-small" ng-click="addtest()">addtest</button>
+
+	<pre>{{menu | json}}</pre> -->
+
+
+	</ion-content>
+</ion-view>

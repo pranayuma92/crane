@@ -1,0 +1,13 @@
+<ion-view style="" class=" " id="page20" title="Notifikasi">
+    <ion-content class="has-header" >
+
+      <ion-list ng-repeat="item in messages | orderBy : reverse:true" >
+          <ion-item ng-click="detail(item)">
+            <p><strong>{{item.title}} / {{item.date}}</strong> <a class="badge badge-balanced">{{item.status}}</a></p>
+            <p><i>{{item.content}}</i></p>
+          </ion-item>
+      </ion-list>
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+<ion-modal-view>
+ <ion-header-bar  class="bar-dark item-input-inset">
+	 <div class="buttons">
+		 <button class="button button-clear button-icon button-assertive ion-android-close" ng-click="modal.hide();resetQty()"></button>
+	 </div>
+	<h1 class="title">
+		<b>Cari crane</b>
+	</h1>
+  </ion-header-bar>
+  <ion-content class="has-header" padding="true">
+	  <label class="item item-input">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input ng-model="item.load" type="text" placeholder="Cari">
+  </label>
+
+  <ion-list ng-if="item.load" ng-repeat="item in menu | filter:item as results">
+
+        <ion-item class="item-thumbnail-left" ng-click="detail(item)">
+
+          <img  ng-src="{{item.image}}" >
+
+          <a class="badge badge-balanced" style="position: absolute;right:0;" >{{item.available}}</a>
+
+          <h4> {{item.name}} </h4>
+          <p>Tahun: {{item.year}}</p>
+          <p>Muatan: {{item.load}} Ton</p>
+
+
+        </ion-item>
+
+      </ion-list>
+
+       <div ng-if="results.length === 0">
+			  <h4 align="center">Crane tidak di temukan</h4>
+		  </div>
+	 
+  </ion-content>
+</ion-modal-view>
